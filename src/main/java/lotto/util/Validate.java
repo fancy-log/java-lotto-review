@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Set;
 
 public class Validate {
-
+    private static final int LOTTO_PRICE = 1000;
     public static int checkInputMoney(String input) {
-        if (!input.matches("^[0-9]+")) {
+        if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
         }
         int money = Integer.parseInt(input);
-        if(money % 1000 != ZERO) {
+        if(money % LOTTO_PRICE != ZERO || money == ZERO) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_PRICE);
 
         }
@@ -41,7 +41,7 @@ public class Validate {
     private static void checkWinningNumberRange(List<String> numbers) {
         for(int i = 0; i < numbers.size(); i++) {
             String number = numbers.get(i);
-            if(!number.matches("^[0-9]*$")) {
+            if(!number.matches("[0-9]*$")) {
                 throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
             }
             int num = Integer.parseInt(numbers.get(i));
@@ -52,7 +52,7 @@ public class Validate {
     }
 
     public static void checkBonusNumberInfo(String bonusInput, List<Integer> winningNumber) {
-        if(!bonusInput.matches("^[0-9]*$")) {
+        if(!bonusInput.matches("[0-9]*$")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
         }
         int bonusNumber = Integer.parseInt(bonusInput);
