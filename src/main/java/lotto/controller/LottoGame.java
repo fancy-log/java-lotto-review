@@ -10,7 +10,7 @@ public class LottoGame {
     Validate validate = new Validate();
 
     public void run() {
-        String input = (inputView.readInputMoney());
+        int money = validate.checkInputMoney(inputView.readInputMoney());
 
     }
 }
