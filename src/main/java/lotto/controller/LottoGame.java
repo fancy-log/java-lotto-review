@@ -77,7 +77,7 @@ public class LottoGame {
         revenue = 0;
         for(int i = 1; i < countRank.length; i++) {
             long reward = RANKING.valueOf("RANK"+i).winningMoney;
-            revenue += reward / countRank[i];
+            revenue += reward  * countRank[i];
         }
     }
 }
