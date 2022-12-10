@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Validate {
     private static final int LOTTO_PRICE = 1000;
-    public static int checkInputMoney(String input) {
+    public static void checkInputMoney(String input) {
         if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
         }
@@ -17,7 +17,6 @@ public class Validate {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_PRICE);
 
         }
-        return money;
     }
     public static void checkWinningNumberInfo(List<String> numbers) {
         checkWinningNumberSize(numbers);
