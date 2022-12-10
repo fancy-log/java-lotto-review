@@ -12,4 +12,7 @@ public class OutputView {
             System.out.println(lotto.getNumbers());
         }
     }
+    public void printEnter() {
+        System.out.println();
+    }
 }
