@@ -3,18 +3,13 @@ package lotto.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import lotto.domain.Lotto;
+import lotto.model.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoRandomNumberGenerator;
+import lotto.domain.User;
 
-import static lotto.util.Validate.checkInputMoney;
-import static lotto.util.Validate.checkWinningNumberInfo;
-import static lotto.util.Validate.checkBonusNumberInfo;
-import static lotto.view.InputView.readInputMoney;
-import static lotto.view.InputView.readInputWinningNumber;
-import static lotto.view.InputView.readInputBonusNumber;
+
 import static lotto.view.OutputView.printLottoMoneyCount;
-import static lotto.view.OutputView.printEnter;
 import static lotto.view.OutputView.printResult;
 
 public class LottoGame {
@@ -34,43 +29,31 @@ public class LottoGame {
         }
     }
     private static final LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
+    private static User user = new User();
     private static List<Lotto> lottoCount = new ArrayList<>();
-    private static List<Integer> winningNumber = new ArrayList<>();
     private static final int RANK_SIZE = 6;
-    private static int bonusNumber;
     private static int [] countRank;
     private int revenue;
     public void run() {
         init();
         gameStart();
         compare();
-        printResult(t);
+        printResult(revenue, countRank, user.getMoney());
     }
     private void init() {
-        int money = checkInputMoney(readInputMoney());
-        printEnter();
-        lottoCount = lottoMachine.makeNumber(money);
+        user.getInputMoney();
+        lottoCount = lottoMachine.makeNumber(user.getMoney());
         printLottoMoneyCount(lottoCount);
-        printEnter();
     }
     private void gameStart() {
-        String winningInput = readInputWinningNumber();
-        List<String> numbers = List.of(winningInput.split(","));
-        checkWinningNumberInfo(numbers);
-        for(String str : numbers) {
-            winningNumber.add(Integer.parseInt(str));
-        }
-        printEnter();
-        String bonusInput = readInputBonusNumber();
-        checkBonusNumberInfo(bonusInput, winningNumber);
-        bonusNumber = Integer.parseInt(bonusInput);
-        printEnter();
+        user.inputWinningNumber();
+        user.inputBonusNumber();
     }
     private void compare() {
         countRank = new int[RANK_SIZE];
         for(Lotto lotto : lottoCount) {
             List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
-            int rank = getRank(winningNumber, bonusNumber, numbers);
+            int rank = getRank(user.getWinningNumber(), user.getBonusNumber(), numbers);
             if(rank > 5) {
                 continue;
             }
