@@ -13,18 +13,16 @@ import static lotto.view.OutputView.printLottoMoneyCount;
 import static lotto.view.OutputView.printResult;
 
 public class LottoGame {
-    public enum Rank {
-        RANK1(6, 200000000),
-        RANK2(5, 30000000),
-        RANK3(5, 1500000),
-        RANK4(4, 50000),
-        RANK5(3, 5000),
-        RANK6(0, 0);
+    public enum RANKING {
+        RANK1(200000000),
+        RANK2(30000000),
+        RANK3(1500000),
+        RANK4(50000),
+        RANK5(5000),
+        RANK6( 0);
 
-        private int countOfMatch;
         private int winningMoney;
-        Rank(int countOfMatch, int winningMoney) {
-            this.countOfMatch = countOfMatch;
+        RANKING(int winningMoney) {
             this.winningMoney = winningMoney;
         }
     }
@@ -77,8 +75,8 @@ public class LottoGame {
     }
     private void calculateRevenue() {
         revenue = 0;
-        for(int i = 0; i < countRank.length; i++) {
-            long reward = Rank.valueOf("RANK"+i).winningMoney;
+        for(int i = 1; i < countRank.length; i++) {
+            long reward = RANKING.valueOf("RANK"+i).winningMoney;
             revenue += reward / countRank[i];
         }
     }
