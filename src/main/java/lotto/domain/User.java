@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static int money;
+    private static int paid;
     private static List<Integer> winningNumber = new ArrayList<>();
     private static int bonusNumber;
     public void getInputMoney() {
-        money = checkInputMoney(readInputMoney());
+        String money = readInputMoney();
+        checkInputMoney(money);
         printEnter();
+        this.paid = Integer.parseInt(money);
     }
     public int getMoney() {
-        return money;
+        return paid;
     }
     public void inputWinningNumber() {
         String winningInput = readInputWinningNumber();
