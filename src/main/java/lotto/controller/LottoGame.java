@@ -14,9 +14,9 @@ public class LottoGame {
     OutputView outputView = new OutputView();
     Validate validate = new Validate();
     LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
-
     public void run() {
         int money = validate.checkInputMoney(inputView.readInputMoney());
-        List<Lotto> lottoMoneyCount = lottoMachine.makeNumber(money);
+        List<Lotto> lottoCount = lottoMachine.makeNumber(money);
+        outputView.printLottoMoneyCount(lottoCount);
     }
 }

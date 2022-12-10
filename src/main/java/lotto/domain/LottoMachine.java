@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
@@ -15,6 +16,7 @@ public class LottoMachine {
         int count = money/LOTTO_PRICE;
         for(int i = 0; i < count; i++) {
             List<Integer> numbers = lottoRandomNumberGenerator.generate();
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
