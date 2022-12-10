@@ -6,14 +6,17 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoRandomNumberGenerator;
-import lotto.util.Validate;
-import lotto.view.InputView;
-import lotto.view.OutputView;
+
+import static lotto.util.Validate.checkInputMoney;
+import static lotto.util.Validate.checkWinningNumberInfo;
+import static lotto.util.Validate.checkBonusNumberInfo;
+import static lotto.view.InputView.readInputMoney;
+import static lotto.view.InputView.readInputWinningNumber;
+import static lotto.view.InputView.readInputBonusNumber;
+import static lotto.view.OutputView.printLottoMoneyCount;
+import static lotto.view.OutputView.printEnter;
 
 public class LottoGame {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
-    Validate validate = new Validate();
     LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
     List<Integer> winningNumber = new ArrayList<>();
     public void run() {
@@ -21,23 +24,23 @@ public class LottoGame {
         gameStart();
     }
     private void init() {
-        int money = validate.checkInputMoney(inputView.readInputMoney());
-        outputView.printEnter();
+        int money = checkInputMoney(readInputMoney());
+        printEnter();
         List<Lotto> lottoCount = lottoMachine.makeNumber(money);
-        outputView.printLottoMoneyCount(lottoCount);
-        outputView.printEnter();
+        printLottoMoneyCount(lottoCount);
+        printEnter();
     }
     private void gameStart() {
-        String winningInput = inputView.readInputWinningNumber();
+        String winningInput = readInputWinningNumber();
         List<String> numbers = List.of(winningInput.split(","));
-        validate.checkWinningNumberInfo(numbers);
+        checkWinningNumberInfo(numbers);
         for(String str : numbers) {
             winningNumber.add(Integer.parseInt(str));
         }
-        outputView.printEnter();
-        String bonusInput = inputView.readInputBonusNumber();
-        validate.checkBonusNumberInfo(bonusInput, winningNumber);
+        printEnter();
+        String bonusInput = readInputBonusNumber();
+        checkBonusNumberInfo(bonusInput, winningNumber);
         int bonusNumber = Integer.parseInt(bonusInput);
-        outputView.printEnter();
+        printEnter();
     }
 }

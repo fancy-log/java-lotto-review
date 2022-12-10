@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class Validate {
 
-    public int checkInputMoney(String input) {
-        if (!input.matches("[0-9]+")) {
+    public static int checkInputMoney(String input) {
+        if (!input.matches("^[0-9]+")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
         }
         int money = Integer.parseInt(input);
@@ -19,26 +19,26 @@ public class Validate {
         }
         return money;
     }
-    public void checkWinningNumberInfo(List<String> numbers) {
+    public static void checkWinningNumberInfo(List<String> numbers) {
         checkWinningNumberSize(numbers);
         checkWinningNumberNoDuplicate(numbers);
         checkWinningNumberRange(numbers);
     }
 
-    private void checkWinningNumberSize(List<String> numbers) {
+    private static void checkWinningNumberSize(List<String> numbers) {
         if(numbers.size() != WINNING_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_WINNING_NUMBER_COUNT);
         }
     }
 
-    private void checkWinningNumberNoDuplicate(List<String> numbers) {
+    private static void checkWinningNumberNoDuplicate(List<String> numbers) {
         Set<String> numbersNoDuplicate = new HashSet<>(numbers);
         if(numbersNoDuplicate.size() != WINNING_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_WINNING_NUMBER_NO_DUPLICATE);
         }
     }
 
-    private void checkWinningNumberRange(List<String> numbers) {
+    private static void checkWinningNumberRange(List<String> numbers) {
         for(int i = 0; i < numbers.size(); i++) {
             String number = numbers.get(i);
             if(!number.matches("^[0-9]*$")) {
@@ -51,7 +51,7 @@ public class Validate {
         }
     }
 
-    public void checkBonusNumberInfo(String bonusInput, List<Integer> winningNumber) {
+    public static void checkBonusNumberInfo(String bonusInput, List<Integer> winningNumber) {
         if(!bonusInput.matches("^[0-9]*$")) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
         }
