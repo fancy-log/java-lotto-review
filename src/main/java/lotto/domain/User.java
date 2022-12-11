@@ -2,12 +2,10 @@ package lotto.domain;
 
 import static lotto.util.Validate.*;
 import static lotto.view.InputView.*;
-import static lotto.view.OutputView.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lotto.util.Validate;
 
 public class User {
     private static int paid;
