@@ -7,6 +7,8 @@ import static lotto.view.OutputView.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.util.Validate;
+
 public class User {
     private static int paid;
     private static List<Integer> winningNumber = new ArrayList<>();
@@ -14,7 +16,6 @@ public class User {
     public void getInputMoney() {
         String money = readInputMoney();
         checkInputMoney(money);
-        printEnter();
         this.paid = Integer.parseInt(money);
     }
     public int getMoney() {
@@ -27,7 +28,6 @@ public class User {
         for(String str : numbers) {
             winningNumber.add(Integer.parseInt(str));
         }
-        printEnter();
     }
     public List<Integer> getWinningNumber() {
         return winningNumber;
@@ -36,7 +36,6 @@ public class User {
         String bonusInput = readInputBonusNumber();
         checkBonusNumberInfo(bonusInput, winningNumber);
         bonusNumber = Integer.parseInt(bonusInput);
-        printEnter();
     }
     public int getBonusNumber() {
         return bonusNumber;
