@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.model.Lotto;
+
 public class LottoMachine {
     private static final int LOTTO_PRICE = 1000;
     LottoRandomNumberGenerator lottoRandomNumberGenerator;

@@ -34,6 +34,7 @@ public class LottoGame {
     private int revenue;
     public void run() {
         init();
+        printLottoMoneyCount(lottoCount);
         gameStart();
         compare();
         printResult(revenue, countRank, user.getMoney());
@@ -41,7 +42,6 @@ public class LottoGame {
     private void init() {
         user.getInputMoney();
         lottoCount = lottoMachine.makeNumber(user.getMoney());
-        printLottoMoneyCount(lottoCount);
     }
     private void gameStart() {
         user.inputWinningNumber();
