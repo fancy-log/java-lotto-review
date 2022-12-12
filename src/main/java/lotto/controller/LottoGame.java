@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import static lotto.view.OutputView.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +9,6 @@ import lotto.model.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoRandomNumberGenerator;
 import lotto.domain.User;
-
-
-import static lotto.view.OutputView.printLottoMoneyCount;
-import static lotto.view.OutputView.printResult;
 
 public class LottoGame {
     public enum RANKING {
@@ -21,9 +19,12 @@ public class LottoGame {
         RANK5(5000),
         RANK6( 0);
 
-        private int winningMoney;
-        RANKING(int winningMoney) {
-            this.winningMoney = winningMoney;
+        private int reward;
+        public int getReward() {
+            return reward;
+        }
+        RANKING(int reward) {
+            this.reward = reward;
         }
     }
     private static final LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
@@ -31,7 +32,7 @@ public class LottoGame {
     private static List<Lotto> lottoCount = new ArrayList<>();
     private static final int RANK_SIZE = 6;
     private static int [] countRank;
-    private int revenue;
+    private static int revenue;
     public void run() {
         init();
         printLottoMoneyCount(lottoCount);
@@ -76,7 +77,7 @@ public class LottoGame {
     private void calculateRevenue() {
         revenue = 0;
         for(int i = 1; i < countRank.length; i++) {
-            long reward = RANKING.valueOf("RANK"+i).winningMoney;
+            long reward = RANKING.valueOf("RANK"+i).getReward();
             revenue += reward  * countRank[i];
         }
     }

@@ -18,7 +18,7 @@ public class LottoMachine {
         int count = money/LOTTO_PRICE;
         for(int i = 0; i < count; i++) {
             List<Integer> numbers = lottoRandomNumberGenerator.generate();
-            Collections.sort(numbers);
+            //Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }

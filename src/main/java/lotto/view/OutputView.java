@@ -23,7 +23,7 @@ public class OutputView {
         System.out.println("4개 일치 (50,000원) - " + countRank[4] + "개");
         System.out.println("5개 일치 (1,500,000원) - " + countRank[3] + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countRank[2] + "개");
-        System.out.println("6개 일치) (2,000,000,000) - " + countRank[1] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + countRank[1] + "개");
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }
