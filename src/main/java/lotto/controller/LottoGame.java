@@ -53,9 +53,7 @@ public class LottoGame {
         for(Lotto lotto : lottoCount) {
             List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
             int rank = getRank(user.getWinningNumber(), user.getBonusNumber(), numbers);
-            if(rank > 5) {
-                continue;
-            }
+            if(rank > 5) continue;
             countRank[rank] += 1;
         }
         calculateRevenue();
@@ -65,13 +63,10 @@ public class LottoGame {
         numbers.retainAll(winningNumber);
         // numbers.size() = 일치한 갯수
         int rank = 8 - numbers.size();
-
-        if(numbers.size() == 5 && bonusNumIsOk) {
-            rank -= 1; // 8-5-1=6
-        }
-        if(numbers.size() == 6) {
+        if(numbers.size() == 5 && bonusNumIsOk)
+            rank -= 1; // rank = 8-5-1=2
+        if(numbers.size() == 6)
             rank = 1;
-        }
         return rank;
     }
     private void calculateRevenue() {

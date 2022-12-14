@@ -15,7 +15,6 @@ public class Validate {
         int money = Integer.parseInt(input);
         if(money % LOTTO_PRICE != ZERO || money == ZERO) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_PRICE);
-
         }
     }
     public static void checkWinningNumberInfo(List<String> numbers) {
@@ -40,26 +39,21 @@ public class Validate {
     private static void checkWinningNumberRange(List<String> numbers) {
         for(int i = 0; i < numbers.size(); i++) {
             String number = numbers.get(i);
-            if(!number.matches("[0-9]*$")) {
+            if(!number.matches("[0-9]*$"))
                 throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
-            }
             int num = Integer.parseInt(numbers.get(i));
-            if(num < LOTTO_NUMBER_RANGE_MIN || num > LOTTO_NUMBER_RANGE_MAX) {
+            if(num < LOTTO_NUMBER_RANGE_MIN || num > LOTTO_NUMBER_RANGE_MAX)
                 throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_NUMBER_RANGE);
-            }
         }
     }
 
     public static void checkBonusNumberInfo(String bonusInput, List<Integer> winningNumber) {
-        if(!bonusInput.matches("[0-9]*$")) {
+        if(!bonusInput.matches("[0-9]*$"))
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
-        }
         int bonusNumber = Integer.parseInt(bonusInput);
-        if(winningNumber.contains(bonusNumber)) {
+        if(winningNumber.contains(bonusNumber))
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_NUMBER_NO_DUPLICATE);
-        }
-        if(bonusNumber < LOTTO_NUMBER_RANGE_MIN || bonusNumber > LOTTO_NUMBER_RANGE_MAX) {
+        if(bonusNumber < LOTTO_NUMBER_RANGE_MIN || bonusNumber > LOTTO_NUMBER_RANGE_MAX)
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_NUMBER_RANGE);
-        }
     }
 }
