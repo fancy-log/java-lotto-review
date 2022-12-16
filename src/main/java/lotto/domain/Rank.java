@@ -1,7 +1,6 @@
 package lotto.domain;
 
-public class Rank {
-    public enum RANKING {
+public enum Rank {
         RANK1(200000000),
         RANK2(30000000),
         RANK3(1500000),
@@ -15,8 +14,7 @@ public class Rank {
             return reward;
         }
 
-        RANKING(int reward) {
+        Rank(int reward) {
             this.reward = reward;
         }
     }
-}

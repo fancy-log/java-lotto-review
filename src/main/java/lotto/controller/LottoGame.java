@@ -65,7 +65,7 @@ public class LottoGame {
     private void calculateRevenue() {
         revenue = 0;
         for (int i = 1; i < countRank.length; i++) {
-            long reward = Rank.RANKING.valueOf("RANK" + i).getReward();
+            long reward = Rank.valueOf("RANK" + i).getReward();
             revenue += reward * countRank[i];
         }
     }
