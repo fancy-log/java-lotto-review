@@ -10,15 +10,20 @@ public class Validate {
     private static final int LOTTO_PRICE = 1000;
 
     public static void checkInputMoney(String input) {
-        if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
-        }
+        validateNonNumeric(input);
+
         int money = Integer.parseInt(input);
         if (money % LOTTO_PRICE != ZERO || money == ZERO) {
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_LOTTO_PRICE);
         }
     }
-
+    private static void validateNonNumeric(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_ONLY_NUMBER);
+        }
+    }
     public static void checkWinningNumberInfo(List<String> numbers) {
         checkWinningNumberSize(numbers);
         checkWinningNumberNoDuplicate(numbers);
