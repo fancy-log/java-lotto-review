@@ -26,4 +26,7 @@ public class OutputView {
         System.out.println("6개 일치 (2,000,000,000원) - " + countRank[1] + "개");
         System.out.println("총 수익률은 " + rate + "%입니다.");
     }
+    public static void printErrorMessage(String e) {
+        System.out.println(e);
+    }
 }
