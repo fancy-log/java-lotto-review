@@ -5,30 +5,13 @@ import static lotto.view.OutputView.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.domain.Rank;
 import lotto.model.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoRandomNumberGenerator;
 import lotto.domain.User;
 
 public class LottoGame {
-    public enum RANKING {
-        RANK1(200000000),
-        RANK2(30000000),
-        RANK3(1500000),
-        RANK4(50000),
-        RANK5(5000),
-        RANK6(0);
-
-        private int reward;
-
-        public int getReward() {
-            return reward;
-        }
-
-        RANKING(int reward) {
-            this.reward = reward;
-        }
-    }
 
     private static final LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
     private static User user = new User();
@@ -82,7 +65,7 @@ public class LottoGame {
     private void calculateRevenue() {
         revenue = 0;
         for (int i = 1; i < countRank.length; i++) {
-            long reward = RANKING.valueOf("RANK" + i).getReward();
+            long reward = Rank.RANKING.valueOf("RANK" + i).getReward();
             revenue += reward * countRank[i];
         }
     }
