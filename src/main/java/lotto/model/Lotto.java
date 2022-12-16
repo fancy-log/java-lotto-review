@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.List;
 import java.util.Set;
+import lotto.util.ExceptionMessage;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,12 +14,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_MESSAGE + ExceptionMessage.ERROR_WINNING_NUMBER_COUNT);
         if (Set.copyOf(numbers).size() != 6)
-            throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호는 중복이 없어야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.ERROR_MESSAGE + ExceptionMessage.ERROR_WINNING_NUMBER_NO_DUPLICATE);
         for (int num : numbers) {
             if (num < 1 || num > 45)
-                throw new IllegalArgumentException("[ERROR] 1 ~ 45 숫자만 입력 가능합니다. ");
+                throw new IllegalArgumentException(ExceptionMessage.ERROR_MESSAGE + ExceptionMessage.ERROR_LOTTO_NUMBER_RANGE);
         }
     }
 
