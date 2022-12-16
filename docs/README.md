@@ -72,3 +72,50 @@
 
 
 ## ✅ 테스트 기능 목록
+
+- domain 패키지
+  - UserTest
+    - [x] 당첨 번호 유효성 검사 - 갯수가 6개가 아닌 경우, 숫자가 아닌 경우, 중복인 경우, 숫자 범위를 벗어난 경우
+    - [x] 보너스 번호 유효성 검사 - 숫자가 아닌 경우, 당첨 번호와 중복인 경우, 숫자 범위를 벗어난 경우
+- ApplicationTest
+  - [x] 전체 기능 확인
+  - [x] 에러 처리 확인
+- LottoTest
+  - [x] 로또 번호 개수가 6개가 아닌 경우
+  - [x] 로또 번호가 중복인 경우
+  - [x] 로또 번호 범위가 1~45가 아닌 경우
+
+
+### 폴더 구조
+
+```
+└── src
+    ├── main
+    │   └── java
+    │       └── lotto
+    │           ├── Application.java
+    │           ├── controller
+    │           │   └── LottoGame.java
+    │           ├── domain
+    │           │   ├── LottoMachine.java
+    │           │   ├── LottoNumberGenerator.java
+    │           │   ├── LottoRandomNumberGenerator.java
+    │           │   ├── Rank.java
+    │           │   └── User.java
+    │           ├── model
+    │           │   └── Lotto.java
+    │           ├── util
+    │           │   ├── ExceptionMessage.java
+    │           │   └── Validate.java
+    │           └── view
+    │               ├── InputView.java
+    │               └── OutputView.java
+    └── test
+        └── java
+            └── lotto
+                ├── ApplicationTest.java
+                ├── LottoTest.java
+                └── domain
+                    └── UserTest.java
+
+```
