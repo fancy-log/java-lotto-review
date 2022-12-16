@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lotto.model.Lotto;
 
@@ -19,8 +20,8 @@ public class LottoMachine {
         int count = money / LOTTO_PRICE;
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = lottoRandomNumberGenerator.generate();
-            //Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
+            List<Integer> sortedLottoNumbers = numbers.stream().sorted().collect(Collectors.toList());
+            Lotto lotto = new Lotto(sortedLottoNumbers);
             lottos.add(lotto);
         }
         return lottos;
